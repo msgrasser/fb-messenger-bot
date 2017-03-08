@@ -61,7 +61,7 @@ def process_message(sender_id, msg_in):
         msg_out = "Great, here's the link: https://www.example.com/acme_regs Can I help you with anything else?"
     elif msg_in == "Nope, thanks!":
         msg_out = "Thank you! Please let me know if you need anything else. I'll be patiently waiting! ;)"    
-    send_message(sender_id, msg)
+    send_message(sender_id, msg_out)
 
 def send_message(recipient_id, message_text):
 
