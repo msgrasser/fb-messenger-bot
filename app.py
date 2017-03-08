@@ -53,6 +53,7 @@ def webhook():
     return "ok", 200
 
 def process_message(sender_id, msg_in):
+    msg_out = ""
     if msg_in == "Yo":
         msg_out = "Hey, Matt! How may I assist you?"
     elif msg_in == "I need help navigating the new regulation.":
