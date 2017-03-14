@@ -53,12 +53,23 @@ def webhook():
     return "ok", 200
 
 def process_message(sender_id, msg_in):
-    log("sender_name: https://graph.facebook.com/v2.6/{}?fields=name&page_access_token={}".format(sender_id, os.environ["PAGE_ACCESS_TOKEN"]))
+    resp = requests.get("https://graph.facebook.com/v2.6/{}?fields=name&access_token={}".format(sender_id, os.environ["PAGE_ACCESS_TOKEN"]))
+    user_dict = json.loads(resp._content)
+    log("sender_details: {}".format(user_dict))
+
+    first_name = user_dict["first_name"]
+    last_name = user_dict["last_name"]
+    profile_pic = user_dict["profile_pic"]
+    locale = user_dict["locale"]
+    timezone = user_dict["timezone"]
+    gender = user_dict["gender"]
+    title = "Mr." if gender == "male" else "Ms."
+
     msg_out = ""
     if msg_in == "Yo":
-        msg_out = "Hey, Matt! How may I assist you?"
+        msg_out = "Hey, {} {}! How may I assist you?".format(title, last_name)
     elif msg_in == "I need help navigating the new regulation.":
-        msg_out =  "It sounds like you want help with the 2017 Acme Act. Is that correct?"
+        msg_out =  "No problem, {}. It sounds like you want help with the 2017 Acme Act. Is that correct?".format(first_name)
     elif msg_in == "Yeah":
         msg_out = "Great, here's the link: https://www.example.com/acme_regs Can I help you with anything else?"
     elif msg_in == "Nope, thanks!":
