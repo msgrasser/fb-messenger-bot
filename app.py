@@ -68,7 +68,7 @@ def process_message(sender_id, msg_in):
     title = "Mr." if gender == "male" else "Ms."
     local_hour = datetime.utcnow().hour + timezone
     salutation_time = "day"
-    if local_hour < 3
+    if local_hour < 3:
         salutation_time = "evening"
     elif local_hour < 12:
         salutation_time = "morning"
