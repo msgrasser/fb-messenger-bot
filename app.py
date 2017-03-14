@@ -4,6 +4,7 @@ import json
 
 import requests
 from flask import Flask, request
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -63,11 +64,22 @@ def process_message(sender_id, msg_in):
     locale = user_dict["locale"]
     timezone = user_dict["timezone"]
     gender = user_dict["gender"]
+
     title = "Mr." if gender == "male" else "Ms."
+    local_hour = datetime.utcnow().hour + timezone
+    salutation_time = "day"
+    if local_hour < 3
+        salutation_time = "evening"
+    elif local_hour < 12:
+        salutation_time = "morning"
+    elif local_hour < 17:
+        salutation_time = "afternoon"
+    else:
+        salutation_time = "evening"
 
     msg_out = ""
-    if msg_in == "Yo":
-        msg_out = "Hey, {} {}! How may I assist you?".format(title, last_name)
+    if msg_in == "Hello":
+        msg_out = "Good {}, {} {}! How may I assist you?".format(salutation_time, title, last_name)
     elif msg_in == "I need help navigating the new regulation.":
         msg_out =  "No problem, {}. It sounds like you want help with the 2017 Acme Act. Is that correct?".format(first_name)
     elif msg_in == "Yeah":
