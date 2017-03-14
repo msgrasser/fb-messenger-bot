@@ -53,7 +53,7 @@ def webhook():
     return "ok", 200
 
 def process_message(sender_id, msg_in):
-    resp = requests.get("https://graph.facebook.com/v2.6/{}?fields=name&access_token={}".format(sender_id, os.environ["PAGE_ACCESS_TOKEN"]))
+    resp = requests.get("https://graph.facebook.com/v2.6/{}?access_token={}".format(sender_id, os.environ["PAGE_ACCESS_TOKEN"]))
     user_dict = json.loads(resp._content)
     log("sender_details: {}".format(user_dict))
 
