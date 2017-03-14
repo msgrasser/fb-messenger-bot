@@ -53,6 +53,7 @@ def webhook():
     return "ok", 200
 
 def process_message(sender_id, msg_in):
+    log("sender_id: {}".format(sender_id))
     msg_out = ""
     if msg_in == "Yo":
         msg_out = "Hey, Matt! How may I assist you?"
