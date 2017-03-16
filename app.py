@@ -83,7 +83,7 @@ def process_message(sender_id, msg_in):
     elif msg_in == "Agent 123 ripped me off":
         msg_out =  "I'm sorry to hear that, {}. It sounds like you're attempting to report a case of agent fraud against Agent 123, in which case I'll just need a few more details. Are you comfortable sharing?".format(first_name)
     elif msg_in == "Yeah":
-        msg_out = "Great! First, was there any disclosure of pricing? (examples include: posters, billboards, pamphlets, and other materials that list the prices of the service – see the full regulation at http://www.example.com/agent_pricing_disclosure_law.pdf)"
+        msg_out = "Great! First, was there any disclosure of pricing? (examples include: posters, billboards, pamphlets, and other materials that list the prices of the service - see the full regulation at http://www.example.com/agent_pricing_disclosure_law.pdf)"
     elif msg_in == "Yes":
         msg_out = "Great, thank you for the information. It sounds like the agent was in compliance with the first part of the regulation. Did you also receive a message at the time of the transaction? (e.g. via SMS, push notification, or USSD confirmation)"    
     elif msg_in == "Yep":
