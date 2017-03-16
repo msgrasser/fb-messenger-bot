@@ -80,13 +80,19 @@ def process_message(sender_id, msg_in):
     msg_out = ""
     if msg_in == "Hello":
         msg_out = "Good {}, {} {}! How may I assist you?".format(salutation_time, title, last_name)
-    elif msg_in == "I need help navigating the new regulation.":
-        msg_out =  "No problem, {}. It sounds like you want help with the 2017 Acme Act. Is that correct?".format(first_name)
+    elif msg_in == "Agent 123 ripped me off":
+        msg_out =  "I'm sorry to hear that, {}. It sounds like you're attempting to report a case of agent fraud against Agent 123, in which case I'll just need a few more details. Are you comfortable sharing?".format(first_name)
     elif msg_in == "Yeah":
-        msg_out = "Great, here's the link: https://www.example.com/acme_regs Can I help you with anything else?"
-    elif msg_in == "Nope, thanks!":
-        msg_out = "Thank you! Please let me know if you need anything else. I'll be patiently waiting! ;)"    
-    
+        msg_out = "Great! First, was there any disclosure of pricing? (examples include: posters, billboards, pamphlets, and other materials that list the prices of the service – see the full regulation at http://www.example.com/agent_pricing_disclosure_law.pdf)"
+    elif msg_in == "Yes":
+        msg_out = "Great, thank you for the information. It sounds like the agent was in compliance with the first part of the regulation. Did you also receive a message at the time of the transaction? (e.g. via SMS, push notification, or USSD confirmation)"    
+    elif msg_in == "Yep":
+        msg_out = "Ok, thank you. While I'm very sorry to hear about your negative experience, it sounds like your agent was actually in compliance with existing regulation. If you are unhappy with this provider, we suggest that you look around for other providers who better suit your needs. Can I help you with anything else today?"
+    elif msg_in == "Nope":
+        msg_out = "Ok, thank you. Based on the information you've provided, we will need to conduct a more detailed investigation into the matter, and will reach out to you via messenger when that's complete. Can I help you with anything else today?"    
+    elif msg_in == "No":
+        msg_out = "Ok, thank you for contacting me! Please let me know if you need anything else. I'll be patiently waiting! ;)"    
+
     if msg_out:
         send_message(sender_id, msg_out)
 
